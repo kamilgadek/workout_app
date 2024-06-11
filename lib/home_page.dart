@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'colors.dart' as color;
 
@@ -9,6 +11,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List info = [];
+
+  _initData() {
+    DefaultAssetBundle.of(context).loadString('json/info.json').then((value) {
+      info = json.decode(value);
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _initData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -265,8 +281,114 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ],
                     ),
-                  ),
+                  )
                 ],
+              ),
+            ),
+            Row(
+              children: [
+                Text(
+                  'Area of focus',
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.w500,
+                    color: color.AppColor.homePageTitle,
+                  ),
+                ),
+              ],
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: (info.length.toDouble() / 2).toInt(),
+                itemBuilder: (_, i) {
+
+                  int a = 2*i; //0
+                  int b = 2*i + 1; //1
+
+                  return Row(
+                    children: [
+                      Container(
+                        height: 170,
+                        width: 200,
+                        padding: const EdgeInsets.only(bottom: 5),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                            image: AssetImage(
+                              info[a]['img'],
+                            ),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 3,
+                              offset: const Offset(5, 5),
+                              color: color.AppColor.gradientSecond
+                                  .withOpacity(0.1),
+                            ),
+                            BoxShadow(
+                              blurRadius: 3,
+                              offset: const Offset(-5, -5),
+                              color: color.AppColor.gradientSecond
+                                  .withOpacity(0.1),
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Text(
+                              info[a]['title'],
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: color.AppColor.homePageDetail),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: 170,
+                        width: 200,
+                        padding: const EdgeInsets.only(bottom: 5),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                            image: AssetImage(
+                              info[b]['img'],
+                            ),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 3,
+                              offset: const Offset(5, 5),
+                              color: color.AppColor.gradientSecond
+                                  .withOpacity(0.1),
+                            ),
+                            BoxShadow(
+                              blurRadius: 3,
+                              offset: const Offset(-5, -5),
+                              color: color.AppColor.gradientSecond
+                                  .withOpacity(0.1),
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Text(
+                              info[b]['title'],
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: color.AppColor.homePageDetail),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ],
