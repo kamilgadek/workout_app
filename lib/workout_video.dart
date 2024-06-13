@@ -134,7 +134,7 @@ class _VideoInfoState extends State<VideoInfo> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
                       Container(
@@ -181,7 +181,7 @@ class _VideoInfoState extends State<VideoInfo> {
             ),
             Expanded(
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(
@@ -191,12 +191,12 @@ class _VideoInfoState extends State<VideoInfo> {
                 ),
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     Row(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           width: 30,
                         ),
                         Text(
@@ -217,7 +217,7 @@ class _VideoInfoState extends State<VideoInfo> {
                               size: 30,
                               color: color.AppColor.loopColor,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
                             Text(
@@ -229,7 +229,7 @@ class _VideoInfoState extends State<VideoInfo> {
                             )
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                       ],

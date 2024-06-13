@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:workout_app/home_page.dart';
-import 'package:workout_app/workout_video.dart';
-
 void main() {
   runApp(const MyApp());
 }
